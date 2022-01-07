@@ -1,1 +1,3 @@
 rootProject.name = 'NBATracker'
+
+includeFlat 'JPAnba'
