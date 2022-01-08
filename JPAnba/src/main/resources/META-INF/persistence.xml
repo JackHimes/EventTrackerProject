@@ -6,6 +6,7 @@
     </provider>
 		
 		<class>com.skilldistillery.nba.entities.Team</class>
+		<class>com.skilldistillery.nba.entities.Player</class>
 
 
 

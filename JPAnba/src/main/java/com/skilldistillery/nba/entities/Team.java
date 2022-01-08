@@ -1,5 +1,6 @@
 package com.skilldistillery.nba.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Team {
@@ -28,6 +30,9 @@ public class Team {
 	private String venue;
 	
 	private String conference;
+	
+	@OneToMany(mappedBy = "team")
+	private List<Player> roster;
 
 	public Team() {
 		super();
@@ -92,10 +97,19 @@ public class Team {
 	public void setConference(String conference) {
 		this.conference = conference;
 	}
+	
+
+	public List<Player> getRoster() {
+		return roster;
+	}
+
+	public void setRoster(List<Player> roster) {
+		this.roster = roster;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(city, conference, id, logoUrl, name, twitterUrl, venue);
+		return Objects.hash(city, conference, id, logoUrl, name, roster, twitterUrl, venue);
 	}
 
 	@Override
@@ -109,13 +123,14 @@ public class Team {
 		Team other = (Team) obj;
 		return Objects.equals(city, other.city) && Objects.equals(conference, other.conference) && id == other.id
 				&& Objects.equals(logoUrl, other.logoUrl) && Objects.equals(name, other.name)
-				&& Objects.equals(twitterUrl, other.twitterUrl) && Objects.equals(venue, other.venue);
+				&& Objects.equals(roster, other.roster) && Objects.equals(twitterUrl, other.twitterUrl)
+				&& Objects.equals(venue, other.venue);
 	}
 
 	@Override
 	public String toString() {
 		return "Team [id=" + id + ", name=" + name + ", logoUrl=" + logoUrl + ", twitterUrl=" + twitterUrl + ", city="
-				+ city + ", venue=" + venue + ", conference=" + conference + "]";
+				+ city + ", venue=" + venue + ", conference=" + conference + ", roster=" + roster + "]";
 	}
 
 }

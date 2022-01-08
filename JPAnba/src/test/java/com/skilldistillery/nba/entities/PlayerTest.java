@@ -12,11 +12,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class TeamTest {
-
+class PlayerTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Team team;
+	private Player player;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -31,33 +30,25 @@ class TeamTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		team = em.find(Team.class, 1);
+		player = em.find(Player.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		team = null;
+		player = null;
 	}
 
 	@Test
-	void test_Team_Entity_Mapping() {
-		assertNotNull(team);
-		assertEquals("Nuggets", team.getName());
-	}
-
-	@Test
-	void test_logoUrl() {
-		assertNotNull(team);
-		assertEquals("https://www.nba.com/nuggets/sites/nuggets/files/dnuggets-primary-web-150x150.png?",
-				team.getLogoUrl());
+	void test_Player_Entity_Mapping() {
+		assertNotNull(player);
+		assertEquals("Jokic", player.getLastName());
 	}
 	
 	@Test
-	void test_Team_Roster_Mapping() {
-		assertNotNull(team);
-		assertNotNull(team.getRoster());
-		assertTrue(team.getRoster().size() > 0);
+	void test_Player_Team_Mapping() {
+		assertNotNull(player);
+		assertEquals("Nuggets", player.getTeam().getName());
 	}
 
 }
