@@ -2,6 +2,7 @@ package com.skilldistillery.nba.entities;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,17 @@ public class Team {
 
 	private String name;
 	
+	@Column(name = "logo_url")
+	private String logoUrl;
 	
+	@Column(name= "twitter_url")
+	private String twitterUrl;
+
+	private String city;
+
+	private String venue;
+	
+	private String conference;
 
 	public Team() {
 		super();
@@ -37,10 +48,54 @@ public class Team {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+
+	public String getLogoUrl() {
+		return logoUrl;
+	}
+
+	public void setLogoUrl(String logoUrl) {
+		this.logoUrl = logoUrl;
+	}
+
+	public String getTwitterUrl() {
+		return twitterUrl;
+	}
+
+	public void setTwitterUrl(String twitterUrl) {
+		this.twitterUrl = twitterUrl;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
+
+	public String getVenue() {
+		return venue;
+	}
+
+	public void setVenue(String venue) {
+		this.venue = venue;
+	}
+	
+	
+
+	public String getConference() {
+		return conference;
+	}
+
+	public void setConference(String conference) {
+		this.conference = conference;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(city, conference, id, logoUrl, name, twitterUrl, venue);
 	}
 
 	@Override
@@ -52,12 +107,15 @@ public class Team {
 		if (getClass() != obj.getClass())
 			return false;
 		Team other = (Team) obj;
-		return id == other.id;
+		return Objects.equals(city, other.city) && Objects.equals(conference, other.conference) && id == other.id
+				&& Objects.equals(logoUrl, other.logoUrl) && Objects.equals(name, other.name)
+				&& Objects.equals(twitterUrl, other.twitterUrl) && Objects.equals(venue, other.venue);
 	}
 
 	@Override
 	public String toString() {
-		return "Team [id=" + id + ", name=" + name + "]";
+		return "Team [id=" + id + ", name=" + name + ", logoUrl=" + logoUrl + ", twitterUrl=" + twitterUrl + ", city="
+				+ city + ", venue=" + venue + ", conference=" + conference + "]";
 	}
 
 }

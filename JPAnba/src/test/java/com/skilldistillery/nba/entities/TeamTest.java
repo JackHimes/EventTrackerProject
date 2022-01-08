@@ -41,9 +41,14 @@ class TeamTest {
 	}
 
 	@Test
-	void test() {
+	void test_team() {
 		assertNotNull(team);
 		assertEquals("Nuggets", team.getName());
+	}
+	@Test
+	void test_logoUrl() {
+		assertNotNull(team);
+		assertEquals("https://www.nba.com/nuggets/sites/nuggets/files/dnuggets-primary-web-150x150.png?", team.getLogoUrl());
 	}
 
 }
