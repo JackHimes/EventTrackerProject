@@ -12,11 +12,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class TeamTest {
-
+class CoachTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Team team;
+	private Coach coach;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -31,40 +30,25 @@ class TeamTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		team = em.find(Team.class, 1);
+		coach = em.find(Coach.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		team = null;
+		coach = null;
 	}
 
 	@Test
-	void test_Team_Entity_Mapping() {
-		assertNotNull(team);
-		assertEquals("Nuggets", team.getName());
-	}
-
-	@Test
-	void test_logoUrl() {
-		assertNotNull(team);
-		assertEquals("https://www.nba.com/nuggets/sites/nuggets/files/dnuggets-primary-web-150x150.png?",
-				team.getLogoUrl());
+	void test_Coach_Entity_Mapping() {
+		assertNotNull(coach);
+		assertEquals("Mike", coach.getFirstName());
 	}
 	
 	@Test
-	void test_Team_Roster_Mapping() {
-		assertNotNull(team);
-		assertNotNull(team.getRoster());
-		assertTrue(team.getRoster().size() > 0);
-	}
-	
-	@Test
-	void test_Team_Coaches_Mapping() {
-		assertNotNull(team);
-		assertNotNull(team.getCoaches());
-		assertTrue(team.getCoaches().size() > 0);
+	void test_Coach_Team_Mapping() {
+		assertNotNull(coach);
+		assertEquals("Nuggets", coach.getTeam().getName());
 	}
 
 }
