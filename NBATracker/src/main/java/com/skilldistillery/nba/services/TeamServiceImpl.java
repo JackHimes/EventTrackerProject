@@ -22,11 +22,12 @@ public class TeamServiceImpl implements TeamService {
 
 	@Override
 	public Team getTeamById(int teamId) {
+		Team team = null;
 		if (repo.findById(teamId).isPresent()) {
-			Team team = repo.findById(teamId).get();
+			team = repo.findById(teamId).get();
 			return team;
 		}
-		return null;
+		return team;
 	}
 
 	@Override
