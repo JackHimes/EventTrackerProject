@@ -56,8 +56,12 @@ public class PlayerServiceImpl implements PlayerService {
 
 	@Override
 	public boolean deletePlayerById(int playerId) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean deleted = false;
+		if(repo.existsById(playerId)) {
+			repo.deleteById(playerId);
+			deleted = true;
+		}
+		return deleted;
 	}
 
 }

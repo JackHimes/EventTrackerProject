@@ -26,8 +26,17 @@ public class TeamController {
 	private TeamService serv;
 
 	@GetMapping("teams")
-	public List<Team> index() {
-		return serv.getAllTeams();
+	public List<Team> index(HttpServletResponse res) {
+		List<Team> teams = serv.getAllTeams();
+		if(teams != null) {
+			res.setStatus(200);
+			return teams;
+		}
+		else {
+			res.setStatus(404);
+			teams = null;
+		}
+		return teams;
 	}
 
 	@GetMapping("teams/{id}")
