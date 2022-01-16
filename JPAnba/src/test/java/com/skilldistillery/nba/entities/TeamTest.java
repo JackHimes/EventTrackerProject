@@ -60,11 +60,11 @@ class TeamTest {
 		assertTrue(team.getRoster().size() > 0);
 	}
 	
-	@Test
-	void test_Team_Coaches_Mapping() {
-		assertNotNull(team);
-		assertNotNull(team.getCoaches());
-		assertTrue(team.getCoaches().size() > 0);
-	}
+//	@Test
+//	void test_Team_Coaches_Mapping() {
+//		assertNotNull(team);
+//		assertNotNull(team.getCoaches());
+//		assertTrue(team.getCoaches().size() > 0);
+//	}
 
 }

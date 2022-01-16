@@ -34,8 +34,8 @@ public class Team {
 	@OneToMany(mappedBy = "team")
 	private List<Player> roster;
 	
-	@OneToMany(mappedBy = "team")
-	private List<Coach> coaches;
+//	@OneToMany(mappedBy = "team")
+//	private List<Coach> coaches;
 
 	public Team() {
 		super();
@@ -112,17 +112,17 @@ public class Team {
 	
 	
 
-	public List<Coach> getCoaches() {
-		return coaches;
-	}
-
-	public void setCoaches(List<Coach> coaches) {
-		this.coaches = coaches;
-	}
+//	public List<Coach> getCoaches() {
+//		return coaches;
+//	}
+//
+//	public void setCoaches(List<Coach> coaches) {
+//		this.coaches = coaches;
+//	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(city, coaches, conference, id, logoUrl, name, roster, twitterUrl, venue);
+		return Objects.hash(city, conference, id, logoUrl, name, roster, twitterUrl, venue);
 	}
 
 	@Override
@@ -134,8 +134,7 @@ public class Team {
 		if (getClass() != obj.getClass())
 			return false;
 		Team other = (Team) obj;
-		return Objects.equals(city, other.city) && Objects.equals(coaches, other.coaches)
-				&& Objects.equals(conference, other.conference) && id == other.id
+		return Objects.equals(city, other.city) && Objects.equals(conference, other.conference) && id == other.id
 				&& Objects.equals(logoUrl, other.logoUrl) && Objects.equals(name, other.name)
 				&& Objects.equals(roster, other.roster) && Objects.equals(twitterUrl, other.twitterUrl)
 				&& Objects.equals(venue, other.venue);
@@ -144,8 +143,7 @@ public class Team {
 	@Override
 	public String toString() {
 		return "Team [id=" + id + ", name=" + name + ", logoUrl=" + logoUrl + ", twitterUrl=" + twitterUrl + ", city="
-				+ city + ", venue=" + venue + ", conference=" + conference + ", roster=" + roster + ", coaches="
-				+ coaches + "]";
+				+ city + ", venue=" + venue + ", conference=" + conference + ", roster=" + roster + "]";
 	}
 
 }

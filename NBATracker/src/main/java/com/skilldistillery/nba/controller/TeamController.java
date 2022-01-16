@@ -68,6 +68,8 @@ public class TeamController {
 			team = serv.updateTeamById(id, team);
 			if (team == null) {
 				res.setStatus(404);
+			}else {
+				res.setStatus(200);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
