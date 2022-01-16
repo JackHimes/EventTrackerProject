@@ -30,6 +30,7 @@ function getTeams(){
 			if(xhr.status === 200){
 				let data = JSON.parse(xhr.responseText);
 				displayTeams(data);
+				displayConferenceSplit(data);
 			}
 			else {
 				let teamsDiv = document.getElementById('teamList');
@@ -234,7 +235,20 @@ function postNewTeam(){
 	var newTeamJson = JSON.stringify(newTeam);
 	
 	xhr.send(newTeamJson);
+	
+	document.newTeamForm.name.value = '';
+	document.newTeamForm.logoUrl.value = '';
+	document.newTeamForm.city.value = '';
+	document.newTeamForm.twitterUrl.value = '';
+	document.newTeamForm.venue.value = '';
+	document.newTeamForm.conference.value = '';
+	
+	
 }
+
+	  //////////////////////////////
+	 /// UPDATE Team from form/////
+	//////////////////////////////
 
 function updateTeam(team){
 	
@@ -268,6 +282,10 @@ function updateTeam(team){
 	
 }
 
+	  //////////////////////////////
+	 /// DELETE Team from form/////
+	//////////////////////////////
+
 function deleteTeam(team){
 	let xhr = new XMLHttpRequest();
 	xhr.open('DELETE', 'api/teams/' + team.id);
@@ -286,4 +304,29 @@ function deleteTeam(team){
 	xhr.send();
 
 	
+}
+
+function displayConferenceSplit(teams){
+	let westernCount = 0;
+	let easternCount = 0;
+	let conferenceSplitDiv = document.getElementById('conferenceSplitDiv');
+	let h3 = document.createElement('h3');
+	h3.textContent = 'Conference Split: '
+	conferenceSplitDiv.textContent = '';
+	conferenceSplitDiv.appendChild(h3);
+	
+	teams.forEach(function(team){
+		if(team.conference === 'Western'){
+			westernCount++;
+		}
+		else if(team.conference === 'Eastern'){
+			easternCount++;
+		}
+	});
+	let conferenceSplit = 'Western Conference: ' + westernCount + '	| Eastern Conference: ' + easternCount;
+	let p = document.createElement('p');
+	p.textContent = conferenceSplit;
+	conferenceSplitDiv.appendChild(p);
+	
+		
 }

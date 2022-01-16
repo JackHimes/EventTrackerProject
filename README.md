@@ -10,6 +10,12 @@ To accomplish this, a full-stack program was created. At the bottom of the stack
 
 Future directions include adding more data types to the data base, add more logic to retrieve unique data sets to display (ex: finding players by team, finding coaches by keyword, etc.), and implementing the front-end.
 
+1/16/2021:
+This portion of the project was primarily focused on front-end functionality. Added features to the website include dynamically displaying all of the teams, add new teams to the league, and show the conference split. If the user clicks on a team in the table, they are given a form to update the team as well as the option to delete the team.  All of these features were accomplished using JavaScript and AJAX, allowing for the data to be displayed dynamically.
+
+Future directions include making the display teams function more robust and complete (Displaying All players for a team, displaying the image, instead of its link, etc.) and Changing the format/styling of the website to be more pleasing to the eyes.
+
+
 #### How to Return
 
 ### REST API
@@ -25,13 +31,14 @@ Go to http://3.13.17.130:8080/NBATracker/index.html
 ## REST API Reference
 | Return Type | HTTP Method | URI               | Request Body  | Purpose             |
 |-------------|-------------|-------------------|---------------|---------------------|
-| List <Team>  | GET         | api/teams         |               | List all teams      |
+| List <Team> | GET         | api/teams         |               | List all teams      |
 | Team        | GET         | api/teams/{id}    |               | Retrieve Team by id |
 | Team        | POST        | api/teams         | Team JSON     | Create new team     |
 | Team        | PUT         | api/teams{id}     | Team JSON     | Update team         |
 | Team        | DELETE      | api/teams/{id}    |               | Delete team         |
 
 ## Technologies Used
+* Hibernate
 * Spring Tool Suite 4
 * Spring Boot
 * MySQLWorkbench
@@ -40,10 +47,15 @@ Go to http://3.13.17.130:8080/NBATracker/index.html
 * MAMP
 * RESTful Services
 * Java Persistence API
+* JavaScript
+* AJAX
 * Git
 * Github
 * Google
 
 ## Lessons Learned
-1/7/21:
+1/7/2021:
 The start of this project was very helpful to my understanding of building a full-stack program from scratch. This includes building a database and building/configuring the back-end. I also learned how to test my entities via JUnit and Postman to confirm the correct data is being presented/processed. A new tool utilized was RESTful services which greatly reduced the complexity of processing the data from the JPA. I look forward to expanding the websites logic as well as building the front-end.
+
+1/16/2021:
+This project was an excellent way to solidify my understanding of JavaScript and how to make a website dynamic. This was achieved by using AJAX, which was a new technique to me. Learning how to use AJAX was initially challenging, however this utilizing it in this project made it much more clear. I am eager to learn about frameworks like Angular to simplify and make the process more efficient.
