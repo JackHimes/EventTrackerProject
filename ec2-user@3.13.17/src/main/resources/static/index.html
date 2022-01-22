@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NBA Tracker</title>
+<script type="text/javascript" src="js/script.js"></script>
+<!--Temporary  -->
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<!--Temporary  -->
+
+</head>
+<body>
+<main>
+	<h1>NBA Tracker</h1>
+	<h3>Keep track of your favorite teams and more!</h3>
+	<div id ='teamList'></div>
+	<div id='editTeamFormDiv'></div>
+	<div id ='newTeamFormDiv'>
+		<h3>Add a team to the league:</h3>
+		<form action="Post" name='newTeamForm' id='newTeamForm'>
+			<label>Team Name: </label><input type="text" name="name"><br>
+			<label>Logo(url): </label><input type="text" name="logoUrl"><br>
+			<label>City: </label><input type="text" name="city"><br>
+			<label>Twitter Account(url): </label><input type="text" name="twitterUrl"><br>
+			<label>Venue: </label><input type="text" name="venue"><br>
+			<label>Conference: </label><input type="text" name="conference"><br>
+			<button name='newTeamFormBtn' id='newTeamFormBtn'>Create Team</button>
+			
+		</form>
+		<div id='conferenceSplitDiv'>
+		</div>
+			
+	
+	</div>
+	
+</main>
+
+</body>
+</html>
