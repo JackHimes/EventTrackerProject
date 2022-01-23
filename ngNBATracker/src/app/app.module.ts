@@ -6,19 +6,23 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import {HttpClientModule} from '@angular/common/http'
 import { TeamService } from './services/team.service';
+import { FormsModule } from '@angular/forms';
+import { PlayerService } from './services/player.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [
-    TeamService
+    TeamService,
+    PlayerService
   ],
   bootstrap: [AppComponent]
 })

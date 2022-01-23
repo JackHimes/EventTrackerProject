@@ -1,1 +1,77 @@
-<p>home works!</p>
+<h1>NBA Tracker: Keep track of your favorite NBA teams!</h1>
+<div *ngIf="!selected">
+    <table>
+        <thead>
+            <th>Team</th>
+            <th>Roster</th>
+            <th>Logo</th>
+            <th>Twitter</th>
+            <th>City</th>
+            <th>Venue</th>
+            <th>Conference</th>
+            <th>Delete</th>
+        </thead>
+        <tr *ngFor="let team of teams">
+            <td (click)="displayTeam(team);">{{team.name}}</td>
+            <td>TEMP ROSTER</td>
+            <td>
+                <img [src]="team.logoUrl" width="90" height="90">
+            </td>
+            <td><a href="team.twitterUrl">{{team.name}} Twitter</a></td>
+            <td>{{team.city}}</td>
+            <td>{{team.venue}}</td>
+            <td>{{team.conference}}</td>
+            <td *ngIf="team.id"><input type="button" value="Delete" style="background-color: red;" (click)="deleteTeam(team.id)"></td>
+
+        </tr>
+    </table>  
+
+    <form class="">
+        <label>Team Name: </label><input type="text" name="name" [(ngModel)]="newTeam.name"><br>
+        <label>Logo url: </label><input type="text" name="logoUrl" [(ngModel)]="newTeam.logoUrl"><br>
+        <label>Twitter url: </label><input type="text" name="twitterUrl" [(ngModel)]="newTeam.twitterUrl"><br>
+        <label>City: </label><input type="text" name="city" [(ngModel)]="newTeam.city"><br>
+        <label>Venue: </label><input type="text" name="venue" [(ngModel)]="newTeam.venue"><br>
+        <!-- <label>Conference: </label><input type="text" name="conference" [(ngModel)]="newTeam.conference"><br> -->
+        <label>Conference: </label><input type="radio" name="conferenceWest" value="Western" [(ngModel)]="newTeam.conference">Western
+        <input type="radio" name="conferenceEast" value="Eastern" [(ngModel)]="newTeam.conference">Eastern<br>
+        <input class="btn btn-primary" type="submit" name=submit (click)="addTeam(newTeam)">
+    </form>
+
+    
+
+
+
+</div>
+
+<div *ngIf="selected">
+    <div *ngIf="!editTeam">
+        <h1>{{selected.name}}</h1><br>
+        <img [src]="selected.logoUrl" width="90" height="90">
+        <h3>Team Info:</h3>
+        <p>Conference: {{selected.conference}}</p>
+        <p>City: {{selected.city}}</p>
+        <p>Venue: {{selected.venue}}</p>
+        <p><a href="selected.twitterUrl">{{selected.name}} Twitter</a></p>
+
+        <button class="btn btn-secondary" (click)="displayTable();">Back</button>
+        <button class="btn btn-primary" (click)="setEditTeam();">Edit Team</button>
+    </div>
+    <div>
+        <h2>Roster:</h2>
+        <!-- ngFor players hereee -->
+    </div>
+    <div *ngIf="editTeam">
+        <form>
+            <label>Name: </label><input type="text" name="name" value={{selected.name}} [(ngModel)]="editTeam.name"><br>
+            <label>Logo url: </label><input type="text" name="logoUrl" [(ngModel)]="editTeam.logoUrl"><br>
+            <label>Twitter url: </label><input type="text" name="twitterUrl" [(ngModel)]="editTeam.twitterUrl"><br>
+            <label>City: </label><input type="text" name="city"value={{selected.city}} [(ngModel)]="editTeam.city"><br>
+            <label>Venue: </label><input type="text" name="venue" value={{selected.venue}} [(ngModel)]="editTeam.venue"><br>
+            <label>Conference: </label><input type="text" name="conference" value={{selected.conference}} [(ngModel)]="editTeam.conference"><br>
+            <input type="button" (click)="cancelEditTeam();" value="Cancel">
+            <input type="button" (click)="updateTeam(editTeam)" value="Save">
+        </form>
+
+    </div>
+</div>
