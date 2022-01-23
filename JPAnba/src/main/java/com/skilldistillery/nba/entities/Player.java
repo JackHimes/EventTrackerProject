@@ -43,6 +43,8 @@ public class Player {
 	@JoinColumn(name = "team_id")
 	@ManyToOne
 	private Team team;
+	
+	private String position;
 
 	public Player() {
 		super();
@@ -136,17 +138,27 @@ public class Player {
 	public void setTeam(Team team) {
 		this.team = team;
 	}
+	
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
 
 	@Override
 	public String toString() {
 		return "Player [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", number=" + number
 				+ ", height=" + height + ", weight=" + weight + ", points=" + points + ", assists=" + assists
-				+ ", rebounds=" + rebounds + ", salary=" + salary + ", team=" + team + "]";
+				+ ", rebounds=" + rebounds + ", salary=" + salary + ", team=" + team + ", position=" + position + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(assists, firstName, height, id, lastName, number, points, rebounds, salary, team, weight);
+		return Objects.hash(assists, firstName, height, id, lastName, number, points, position, rebounds, salary, team,
+				weight);
 	}
 
 	@Override
@@ -163,6 +175,7 @@ public class Player {
 				&& Double.doubleToLongBits(height) == Double.doubleToLongBits(other.height) && id == other.id
 				&& Objects.equals(lastName, other.lastName) && number == other.number
 				&& Double.doubleToLongBits(points) == Double.doubleToLongBits(other.points)
+				&& Objects.equals(position, other.position)
 				&& Double.doubleToLongBits(rebounds) == Double.doubleToLongBits(other.rebounds)
 				&& Double.doubleToLongBits(salary) == Double.doubleToLongBits(other.salary)
 				&& Objects.equals(team, other.team)

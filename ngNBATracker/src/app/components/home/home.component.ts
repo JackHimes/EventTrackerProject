@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Player } from 'src/app/models/player';
 import { Team } from 'src/app/models/team';
+import { PlayerService } from 'src/app/services/player.service';
 import { TeamService } from 'src/app/services/team.service';
 
 @Component({
@@ -13,9 +15,14 @@ export class HomeComponent implements OnInit {
   selected: Team | null = null;
   newTeam: Team = new Team ();
   editTeam: Team | null = null;
+  conferenceSplit: string = '';
+  
+  players: Player[] = [];
+  teamAvgPPG: number = 0;
 
   constructor(
     private teamService: TeamService,
+    private playerService: PlayerService,
   ) { }
 
   ngOnInit(): void {
@@ -27,10 +34,20 @@ export class HomeComponent implements OnInit {
 
       next: (data) => {
         this.teams = data;
-        // AYY ADD CONFERENCE SPLIT METHOD CALL HERE, PLEASE DONT FORGET
+        this.findConferenceSplit(data);
       
       }, error: (err) => {
         console.error("Observer got an error: " + err)
+      }
+    });
+
+    this.playerService.index().subscribe({
+
+      next: (data1) => {
+        this.players = data1;
+      
+      }, error: (err1) => {
+        console.error("Observer got an error: " + err1)
       }
     });
   }
@@ -91,6 +108,25 @@ export class HomeComponent implements OnInit {
   cancelEditTeam(){
     this.editTeam = null;
   }
+
+findConferenceSplit(teams: Team[]){
+  let westernCount = 0;
+  let easternCount = 0;
+    if (teams != null){
+      for (const team of teams) {
+        if(team.conference === 'Western'){
+          westernCount++;
+        }else if(team.conference === 'Eastern'){
+          easternCount++;
+        }
+        
+      }
+    }
+    this.conferenceSplit = "Western:" + westernCount + " | Eastern: " + easternCount;
+
+}
+
+
   
 
 

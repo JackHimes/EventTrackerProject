@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+body{
+    background: linear-gradient(rgb(0, 7, 107), black);
+}
+th{
+    background-color: gray;
+}
+tr{
+    background-color: rgba(255, 255, 255, 0.842);
+}
+
+form{
+    background-color: rgba(255, 255, 255, 0.842);
+}
+#displayTeamInfo{
+    background-color: rgba(255, 255, 255, 0.842);   
+    color: rgb(0, 0, 71);
+}
+#displayTeamName{
+    color: rgb(0, 0, 71);
+}
+h1, h2{
+    color: rgba(255, 166, 0, 0.603);
+    font-family: monaco, monospace;
+}
+

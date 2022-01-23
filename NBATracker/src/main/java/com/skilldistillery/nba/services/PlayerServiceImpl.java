@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.skilldistillery.nba.entities.Player;
 import com.skilldistillery.nba.entities.Team;
 import com.skilldistillery.nba.repositories.PlayerRepository;
+import com.skilldistillery.nba.repositories.TeamRepository;
 
 @Service
 public class PlayerServiceImpl implements PlayerService {
@@ -33,9 +34,6 @@ public class PlayerServiceImpl implements PlayerService {
 
 	@Override
 	public Player createPlayer(Player player) {
-		Team team = new Team();
-		team.setId(1000);
-		player.setTeam(team);
 		return repo.saveAndFlush(player);
 	}
 
@@ -54,6 +52,7 @@ public class PlayerServiceImpl implements PlayerService {
 			managed.setRebounds(player.getRebounds());
 			managed.setSalary(player.getSalary());
 			managed.setTeam(player.getTeam());
+			managed.setPosition(player.getPosition());
 			repo.saveAndFlush(managed);
 		}
 		return managed;

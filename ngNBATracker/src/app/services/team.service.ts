@@ -34,7 +34,7 @@ export class TeamService {
         catchError((err : any) => {
           console.log(err);
           return throwError(
-            () => new Error('Create(team) todo method error')
+            () => new Error('Create(team) team method error')
           )
         })
       );
@@ -46,7 +46,7 @@ export class TeamService {
       catchError((err: any) => {
         console.log(err);
         return throwError(
-          () => new Error('Destroy(id) todo method error')
+          () => new Error('Destroy(id) team method error')
         )
       })
     );
@@ -59,7 +59,7 @@ public update(team : Team): Observable<Team>{
     catchError((err : any) => {
       console.log(err);
       return throwError(
-        () => new Error('Update(todo) todo method error: ' + err)
+        () => new Error('Update(todo) team method error: ' + err)
       )
     })
   );
