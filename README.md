@@ -1,7 +1,7 @@
 # EventTrackerProject
 
 ## Overview
-This project will be completed over three weekends, and thus progress will be updated per week.
+This project will be completed over three weekends, and thus progress will be updated per week. AWS Deployed website [here[(http://3.13.17.130:8080/NBATracker/index.html)
 
 1/7/2021:
 Need help keeping track of the NBA? Look no further! NBA Tracker is full-stack website that allows you to keep track of the NBA including its players, teams, and coaches (further data types to be added in the future). This website allows for full CRUD operations (create, read, update and delete) of the team data type (further expansion of CRUD on other data types is planned)
@@ -23,17 +23,6 @@ Similar to last week, this week was focused on the front-end of the website. Thi
 Future Directions:  include adding more functionality to the website. For example, making the player entity functionality more robust by adding more CRUD operations. Displaying data in unique/useful ways such as displaying all players by position. Continue styling and formatting.
 
 
-#### How to Return
-
-### REST API
-Go to http://3.13.17.130:8080/NBATracker/api/teams
-
-
-### HTML/JavaScript Front End
-Go to http://3.13.17.130:8080/NBATracker/index.html
-
-
-### Angular Front End
 
 ## REST API Reference
 | Return Type | HTTP Method | URI               | Request Body  | Purpose             |
