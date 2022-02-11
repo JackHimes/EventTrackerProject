@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Team } from '../models/team';
 
 @Injectable({
@@ -8,8 +9,9 @@ import { Team } from '../models/team';
 })
 export class TeamService {
 
-  private baseUrl = 'http://localhost:8083/';
-  private url = this.baseUrl + 'api/teams';
+  // private baseUrl = 'http://localhost:8083/';
+  // private url = this.baseUrl + 'api/teams';
+  private url = environment.baseUrl + 'api/teams';
 
   constructor(
       private http: HttpClient,

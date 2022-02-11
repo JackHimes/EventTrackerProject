@@ -48,8 +48,9 @@ CREATE TABLE IF NOT EXISTS `player` (
   `assists` DOUBLE NULL,
   `rebounds` DOUBLE NULL,
   `salary` DOUBLE NULL,
-  `team_id` INT NOT NULL,
+  `team_id` INT NULL,
   `enabled` TINYINT NULL,
+  `position` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_player_team1_idx` (`team_id` ASC),
   CONSTRAINT `fk_player_team1`
@@ -108,7 +109,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `NBAdb`;
-INSERT INTO `player` (`id`, `first_name`, `last_name`, `number`, `height`, `weight`, `points`, `assists`, `rebounds`, `salary`, `team_id`, `enabled`) VALUES (1, 'Nikola', 'Jokic', 15, 83, 284, 26.0, 7.0, 14.1, 28.54, 1, NULL);
+INSERT INTO `player` (`id`, `first_name`, `last_name`, `number`, `height`, `weight`, `points`, `assists`, `rebounds`, `salary`, `team_id`, `enabled`, `position`) VALUES (1, 'Nikola', 'Jokic', 15, 83, 284, 26.0, 7.0, 14.1, 28.54, 1, NULL, 'C');
+INSERT INTO `player` (`id`, `first_name`, `last_name`, `number`, `height`, `weight`, `points`, `assists`, `rebounds`, `salary`, `team_id`, `enabled`, `position`) VALUES (2, 'Josh', 'Giddey', 3, 80, 205, 11.5, 6.4, 7.3, 6.0, 2, NULL, 'PG');
+INSERT INTO `player` (`id`, `first_name`, `last_name`, `number`, `height`, `weight`, `points`, `assists`, `rebounds`, `salary`, `team_id`, `enabled`, `position`) VALUES (3, 'Jamal', 'Murray', 27, 75, 215, 19.2, 5.7, 2.2, 5.1, 1, NULL, 'PG');
 
 COMMIT;
 
@@ -119,8 +122,7 @@ COMMIT;
 START TRANSACTION;
 USE `NBAdb`;
 INSERT INTO `coach` (`id`, `position`, `salary`, `team_id`, `first_name`, `last_name`) VALUES (1, 'Head Coach', 2, 1, 'Mike', 'Malone');
-INSERT INTO `coach` (`id`, `position`, `salary`, `team_id`, `first_name`, `last_name`) VALUES (2, 'Assistant Coach', 0.2, 1, 'David', 'Adelman');
-INSERT INTO `coach` (`id`, `position`, `salary`, `team_id`, `first_name`, `last_name`) VALUES (3, 'Assistant Coach', 0.2, 1, 'Micah', 'Nori');
+INSERT INTO `coach` (`id`, `position`, `salary`, `team_id`, `first_name`, `last_name`) VALUES (2, 'Head Coach', 1.5, 2, 'Mark', 'Daigneault');
 
 COMMIT;
 

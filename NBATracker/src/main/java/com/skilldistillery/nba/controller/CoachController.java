@@ -16,79 +16,68 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.nba.entities.Team;
-import com.skilldistillery.nba.services.TeamService;
+import com.skilldistillery.nba.entities.Coach;
+import com.skilldistillery.nba.services.CoachService;
 
 @RestController
 @RequestMapping("api")
 @CrossOrigin({"*", "http://localhost:4200"})
-public class TeamController {
-
+public class CoachController {
+	
 	@Autowired
-	private TeamService serv;
-
-	@GetMapping("teams")
-	public List<Team> index(HttpServletResponse res) {
-		List<Team> teams = serv.getAllTeams();
-		if(teams != null) {
-			res.setStatus(200);
-			return teams;
-		}
-		else {
-			res.setStatus(404);
-			teams = null;
-		}
-		return teams;
+	private CoachService coachServ;
+	
+	@GetMapping("coaches")
+	public List<Coach> index(){
+		return coachServ.getAllCoaches();
 	}
-
-	@GetMapping("teams/{id}")
-	public Team findTeamById(@PathVariable int id) {
-		return serv.getTeamById(id);
+	
+	@GetMapping("coaches/{cId}")
+	public Coach findCoachById(@PathVariable int cId) {
+		return coachServ.getCoachById(cId);
 	}
-
-	@PostMapping("teams")
-	public Team createTeam(@RequestBody Team team, HttpServletResponse res, HttpServletRequest req) {
+	
+	@PostMapping("coaches")
+	public Coach createCoach(@RequestBody Coach coach, HttpServletResponse res, HttpServletRequest req) {
 		try {
-			serv.createTeam(team);
+			coachServ.createCoach(coach);
 			res.setStatus(201);
 			StringBuffer url = req.getRequestURL();
-			url.append("/").append(team.getId());
+			url.append("/").append(coach.getId());
 			res.setHeader("Location", url.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.err.println("INVALID JSON FOR NEW Team");
+			System.err.println("INVALID JSON FOR NEW Coach");
 			res.setStatus(400);
-			team = null;
+			coach = null;
 		}
-		return team;
+		return coach;
 	}
-
-	@PutMapping("teams/{id}")
-	public Team updateTeam(@PathVariable int id, @RequestBody Team team, HttpServletRequest req,
-			HttpServletResponse res) {
+	
+	@PutMapping("coaches/{cId}")
+	public Coach updateCoach(@PathVariable int cId, @RequestBody Coach coach, HttpServletRequest req, HttpServletResponse res) {
 		try {
-			team = serv.updateTeamById(id, team);
-			if (team == null) {
+			coach = coachServ.updateCoachById(cId, coach);
+			if(coach == null) {
 				res.setStatus(404);
 			}else {
 				res.setStatus(200);
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
-			team = null;
+			coach = null;
 		}
-
-		return team;
+		return coach;
 	}
-
-	@DeleteMapping("teams/{id}")
-	public void deleteTeam(@PathVariable int id, HttpServletResponse res) {
-
+	
+	@DeleteMapping("coaches/{cId}")
+	public void deleteCoach(@PathVariable int cId, HttpServletResponse res, HttpServletRequest req) {
 		try {
-			if (serv.deleteTeamById(id)) {
+			if(coachServ.deleteCoachById(cId)) {
 				res.setStatus(204);
-			} else {
+			}else {
 				res.setStatus(404);
 			}
 		} catch (Exception e) {
