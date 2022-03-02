@@ -11,6 +11,7 @@ import { PlayerService } from './services/player.service';
 import { PlayerTeamPipe } from './pipes/player-team.pipe';
 import { IndexComponent } from './components/index/index.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
     PlayerTeamPipe,
     IndexComponent,
     NotfoundComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
