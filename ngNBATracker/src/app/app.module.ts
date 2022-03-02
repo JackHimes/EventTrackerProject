@@ -9,12 +9,16 @@ import { TeamService } from './services/team.service';
 import { FormsModule } from '@angular/forms';
 import { PlayerService } from './services/player.service';
 import { PlayerTeamPipe } from './pipes/player-team.pipe';
+import { IndexComponent } from './components/index/index.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PlayerTeamPipe,
+    IndexComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,

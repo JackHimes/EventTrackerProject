@@ -18,7 +18,7 @@ export class TeamService {
   ) { }
 
 
-  index(){
+  public index(){
     return this.http.get<Team[]>(this.url)
     .pipe(
       catchError((err: any) => {
@@ -61,7 +61,7 @@ public update(team : Team): Observable<Team>{
     catchError((err : any) => {
       console.log(err);
       return throwError(
-        () => new Error('Update(todo) team method error: ' + err)
+        () => new Error('Update(team) team method error: ' + err)
       )
     })
   );
