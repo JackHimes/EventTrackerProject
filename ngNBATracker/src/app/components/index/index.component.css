@@ -1,0 +1,40 @@
+#carouselHomePage{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 50px;
+}
+.carousel-item{
+    height: 32rem;
+    width: 100%;
+    background-color: gray;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+}
+
+
+.carouselImage{
+    height: 32rem;
+    display: block;
+    position: relative;
+    float: left;
+    margin-left: 35%;
+    margin-right: auto;
+
+}
+
+.picsum-img-wrapper{
+    width: 250px;
+    height: 250px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+#carouselDiv{
+    background: linear-gradient(rgb(36, 36, 36), black);
+    margin-left: -12px;
+    margin-right: -12px;
+    /* padding-bottom: 25px; */
+}

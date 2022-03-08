@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-index',
@@ -12,4 +14,12 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  images = ['../../assets/Dunking.jpg','../../assets/BasketballAndHoop.jpg', '../../assets/PlayersPlaying.jpg'];
+
+
+
+
 }
+
+
+

@@ -9,3 +9,7 @@ img.headerLogo {
     display: flex;
     justify-content: center;
   }
+
+  .navbar{
+    background: rgb(36, 36, 36)
+  }
