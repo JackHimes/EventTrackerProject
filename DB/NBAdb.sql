@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `coach` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `position` VARCHAR(75) NULL,
   `salary` DOUBLE NULL,
-  `team_id` INT NOT NULL,
+  `team_id` INT NULL,
   `first_name` VARCHAR(150) NULL,
   `last_name` VARCHAR(150) NULL,
   PRIMARY KEY (`id`),
@@ -100,6 +100,8 @@ START TRANSACTION;
 USE `NBAdb`;
 INSERT INTO `team` (`id`, `name`, `logo_url`, `twitter_url`, `city`, `venue`, `conference`) VALUES (1, 'Nuggets', 'https://www.nba.com/nuggets/sites/nuggets/files/dnuggets-primary-web-150x150.png?', 'https://twitter.com/nuggets', 'Denver', 'Ball Arena', 'Western');
 INSERT INTO `team` (`id`, `name`, `logo_url`, `twitter_url`, `city`, `venue`, `conference`) VALUES (2, 'Thunder', 'https://cdn.nba.com/teams/uploads/sites/1610612760/2021/12/logo.svg', 'https://twitter.com/okcthunder', 'Oklahoma City', 'Paycom Center', 'Western');
+INSERT INTO `team` (`id`, `name`, `logo_url`, `twitter_url`, `city`, `venue`, `conference`) VALUES (3, 'Heat', 'https://www.nba.com/heat/sites/heat/files/mia_0.png?w=180&h=105', 'https://twitter.com/miamiheat/', 'Maimi', 'FTX Arena', 'Eastern');
+INSERT INTO `team` (`id`, `name`, `logo_url`, `twitter_url`, `city`, `venue`, `conference`) VALUES (4, 'Bulls', 'https://i.cdn.turner.com/nba/nba/.element/media/2.0/teamsites/bulls/reboot/resources/images/bullhead-1819.png', 'https://twitter.com/chicagobulls?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor', 'Chicago', 'United Center', 'Eastern');
 
 COMMIT;
 

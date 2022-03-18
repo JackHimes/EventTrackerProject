@@ -1,18 +1,5 @@
-#carouselHomePage{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding-bottom: 50px;
-}
-.carousel-item{
-    height: 32rem;
-    width: 100%;
-    background-color: gray;
-    position: relative;
-    background-position: center;
-    background-size: cover;
-}
+
+
 
 
 .carouselImage{
@@ -37,4 +24,17 @@
     margin-left: -12px;
     margin-right: -12px;
     /* padding-bottom: 25px; */
+}
+
+#teamTable{
+    width: 90%;
+    margin-left: 65px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+#tableDiv{
+    background: linear-gradient(black, rgb(0, 7, 107));
+
 }
