@@ -38,6 +38,12 @@ public class Team {
 	@ManyToMany(mappedBy = "teams")
 	private List<Season> seasons;
 	
+	@OneToMany(mappedBy = "homeTeam")
+	private List<Game> homeGames;
+	
+	@OneToMany(mappedBy = "awayTeam")
+	private List<Game> awayGames;
+	
 //	@OneToMany(mappedBy = "team")
 //	private List<Coach> coaches;
 
@@ -95,8 +101,6 @@ public class Team {
 		this.venue = venue;
 	}
 	
-	
-
 	public String getConference() {
 		return conference;
 	}
@@ -133,10 +137,29 @@ public class Team {
 	public void setSeasons(List<Season> seasons) {
 		this.seasons = seasons;
 	}
+	
+	
+
+	public List<Game> getHomeGames() {
+		return homeGames;
+	}
+
+	public void setHomeGames(List<Game> homeGames) {
+		this.homeGames = homeGames;
+	}
+
+	public List<Game> getAwayGames() {
+		return awayGames;
+	}
+
+	public void setAwayGames(List<Game> awayGames) {
+		this.awayGames = awayGames;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(city, conference, id, logoUrl, name, roster, seasons, twitterUrl, venue);
+		return Objects.hash(awayGames, city, conference, homeGames, id, logoUrl, name, roster, seasons, twitterUrl,
+				venue);
 	}
 
 	@Override
@@ -148,8 +171,9 @@ public class Team {
 		if (getClass() != obj.getClass())
 			return false;
 		Team other = (Team) obj;
-		return Objects.equals(city, other.city) && Objects.equals(conference, other.conference) && id == other.id
-				&& Objects.equals(logoUrl, other.logoUrl) && Objects.equals(name, other.name)
+		return Objects.equals(awayGames, other.awayGames) && Objects.equals(city, other.city)
+				&& Objects.equals(conference, other.conference) && Objects.equals(homeGames, other.homeGames)
+				&& id == other.id && Objects.equals(logoUrl, other.logoUrl) && Objects.equals(name, other.name)
 				&& Objects.equals(roster, other.roster) && Objects.equals(seasons, other.seasons)
 				&& Objects.equals(twitterUrl, other.twitterUrl) && Objects.equals(venue, other.venue);
 	}
@@ -158,7 +182,7 @@ public class Team {
 	public String toString() {
 		return "Team [id=" + id + ", name=" + name + ", logoUrl=" + logoUrl + ", twitterUrl=" + twitterUrl + ", city="
 				+ city + ", venue=" + venue + ", conference=" + conference + ", roster=" + roster + ", seasons="
-				+ seasons + "]";
+				+ seasons + ", homeGames=" + homeGames + ", awayGames=" + awayGames + "]";
 	}
 
 }

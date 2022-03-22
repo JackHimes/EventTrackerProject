@@ -9,6 +9,7 @@
 		<class>com.skilldistillery.nba.entities.Player</class>
 		<class>com.skilldistillery.nba.entities.Coach</class>
 		<class>com.skilldistillery.nba.entities.Season</class>
+		<class>com.skilldistillery.nba.entities.Game</class>
 
 
 

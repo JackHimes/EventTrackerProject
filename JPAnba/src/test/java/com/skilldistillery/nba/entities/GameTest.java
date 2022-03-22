@@ -12,15 +12,16 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class SeasonTest {
+class GameTest {
 	
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Season season;
+	private Game game;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		emf = Persistence.createEntityManagerFactory("JPAnba");
+		
 	}
 
 	@AfterAll
@@ -31,40 +32,40 @@ class SeasonTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		season = em.find(Season.class, 1);
+		game = em.find(Game.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		season = null;
+		game = null;
 	}
 
 	@Test
-	void test_Season_Entity_Mapping() {
-		assertNotNull(season);
-		assertEquals(2021, season.getYear());
+	void test_Game_Entity_Mapping() {
+		assertNotNull(game);
+		assertEquals(101, game.getAwayScore());
 	}
 	
 	@Test
-	void test_Season_Teams_Relationship() {
-		assertNotNull(season);
-		assertNotNull(season.getTeams());
-		assertTrue(season.getTeams().size() > 0);
+	void test_Game_HomeTeam_Relational_Mapping() {
+		assertNotNull(game);
+		assertNotNull(game.getHomeTeam());
+		assertEquals("Thunder", game.getHomeTeam().getName());
 	}
 	
 	@Test
-	void test_Season_Champion_Relationship() {
-		assertNotNull(season);
-		assertNotNull(season.getChampion());
-		assertEquals("Suns", season.getChampion().getName());
+	void test_Game_AwayTeam_Relational_Mapping() {
+		assertNotNull(game);
+		assertNotNull(game.getAwayTeam());
+		assertEquals("Nuggets", game.getAwayTeam().getName());
 	}
 
 	@Test
-	void test_Season_Games_Relationship() {
-		assertNotNull(season);
-		assertNotNull(season.getGames());
-		assertTrue(season.getGames().size() > 0);
+	void test_Game_Season_Relational_Mapping() {
+		assertNotNull(game);
+		assertNotNull(game.getSeason());
+		assertEquals(2021, game.getSeason().getYear());
 	}
 
 }

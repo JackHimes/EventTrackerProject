@@ -59,6 +59,20 @@ class TeamTest {
 		assertNotNull(team.getRoster());
 		assertTrue(team.getRoster().size() > 0);
 	}
+
+	@Test
+	void test_Team_AwayGame_Mapping() {
+		assertNotNull(team);
+		assertNotNull(team.getAwayGames());
+		assertTrue(team.getAwayGames().size() > 0);
+	}
+
+	@Test
+	void test_Team_HomeGame_Mapping() {
+		assertNotNull(team);
+		assertNotNull(team.getHomeGames());
+		assertTrue(team.getHomeGames().size() == 0);
+	}
 	
 //	@Test
 //	void test_Team_Coaches_Mapping() {

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -30,6 +31,9 @@ public class Season {
 	@OneToOne
 	@JoinColumn(name="champion_id")
 	private Team champion;
+	
+	@OneToMany(mappedBy = "season")
+	private List<Game> games;
 	
 	
 
@@ -68,10 +72,19 @@ public class Season {
 	public void setChampion(Team champion) {
 		this.champion = champion;
 	}
+	
+
+	public List<Game> getGames() {
+		return games;
+	}
+
+	public void setGames(List<Game> games) {
+		this.games = games;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(champion, id, teams, year);
+		return Objects.hash(champion, games, id, teams, year);
 	}
 
 	@Override
@@ -83,13 +96,14 @@ public class Season {
 		if (getClass() != obj.getClass())
 			return false;
 		Season other = (Season) obj;
-		return Objects.equals(champion, other.champion) && id == other.id && Objects.equals(teams, other.teams)
-				&& year == other.year;
+		return Objects.equals(champion, other.champion) && Objects.equals(games, other.games) && id == other.id
+				&& Objects.equals(teams, other.teams) && year == other.year;
 	}
 
 	@Override
 	public String toString() {
-		return "Season [id=" + id + ", year=" + year + ", teams=" + teams + ", champion=" + champion + "]";
+		return "Season [id=" + id + ", year=" + year + ", teams=" + teams + ", champion=" + champion + ", games="
+				+ games + "]";
 	}
 	
 	
